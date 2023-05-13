@@ -35,6 +35,10 @@
   display: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html[data-theme=dark] {
   --global-bg-color: #1C1C1D;
   --global-code-bg-color: #2c3237;
