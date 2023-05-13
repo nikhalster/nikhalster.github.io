@@ -51,19 +51,17 @@
                   {%- endif -%}
                 </a>
               </li>
-              {% if site.blog_nav_title %}
+              <!-- {% if site.blog_nav_title %} -->
               <!-- Blog -->
-              <li class="nav-item {% if page.url contains 'blog' %}active{% endif %}">
-                <a class="nav-link" href="#news_section">{{ site.blog_nav_title }}
-                  {%- if page.url contains 'blog' -%}
+              <li class="nav-item">
+                <a class="nav-link" href="#news_section">
                   <span class="sr-only">(current)</span>
-                  {%- endif -%}
+                  <!-- {%- endif -%} -->
                 </a>
               </li>
-              {%- endif %}
-
+              <!-- {%- endif %} -->
               <!-- Other pages -->
-              {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
+              <!-- {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
               {%- for p in sorted_pages -%}
               {%- if p.nav and p.autogen == nil -%}
               {%- if p.dropdown %}
@@ -93,7 +91,7 @@
               </li>
               {%- endif -%}
               {%- endif -%}
-              {% endfor -%}
+              {% endfor -%} -->
               {%- if site.enable_darkmode %}
 
               <!-- Toogle theme mode -->
