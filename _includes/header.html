@@ -35,7 +35,7 @@
           </button>
 
           <div class="collapse navbar-collapse text-right" id="navbarNav">
-            <ul class="navbar-nav ml-auto flex-nowrap">
+            <ul class="navbar-nav mr-auto flex-nowrap">
 
               {%- for page in site.pages -%}
                 {% if page.permalink == '/' %}
@@ -45,20 +45,42 @@
 
               <!-- About -->
               <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
-                <a class="nav-link" href="{{ '/' | relative_url }}">{{ about_title }}
+                <a class="nav-link" href="{{ '/' | relative_url }}">home
                   {%- if page.permalink == '/' -%}
                   <span class="sr-only">(current)</span>
                   {%- endif -%}
                 </a>
               </li>
               <!-- {% if site.blog_nav_title %} -->
-              <!-- Blog -->
+              <!-- News -->
               <li class="nav-item">
-                <a class="nav-link" href="#news_section">
+                <a class="nav-link" href="#news_section"> news
+                  {%- if page.permalink == '/' -%}
                   <span class="sr-only">(current)</span>
-                  <!-- {%- endif -%} -->
+                  {%- endif -%}
                 </a>
               </li>
+
+              <!-- Publications-->
+              <li class="nav-item">
+                <a class="nav-link" href="#news_section"> publications
+                  {%- if page.permalink == '/' -%}
+                  <span class="sr-only">(current)</span>
+                  {%- endif -%}
+                </a>
+              </li>
+
+              <!-- Resume -->
+              <li class="nav-item">
+                <a class="nav-link" href="#news_section"> resume
+                  {%- if page.permalink == '/' -%}
+                  <span class="sr-only">(current)</span>
+                  {%- endif -%}
+                </a>
+              </li>
+
+        
+
               <!-- {%- endif %} -->
               <!-- Other pages -->
               <!-- {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
