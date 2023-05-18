@@ -116,7 +116,8 @@ blockquote {
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
-    font-family: monospace;
+    font-family: emoji;
+    font-style: oblique;
 
     p {
       display: inline-block;
@@ -131,6 +132,8 @@ blockquote {
 
 .profile.float-left {
   margin-right: 1rem;
+  border-style: dashed;
+  border-color: lavender;
 }
 
 @media (min-width: 576px) {

@@ -3,10 +3,53 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{nikhal2023mitigating,
+  author={Nikhal, Kshitij and Uzuegbunam, Nkiruka and Kennedy, Bridget and Riggan, Benjamin S.},
+  bibtex_show={true},
+  abstract={Modern algorithms for RGB-IR facial recognition—
+a challenging problem where infrared probe images are
+matched with visible gallery images—leverage precise and
+accurate guidance from curated (i.e., labeled) data to
+bridge large spectral differences. However, supervised
+cross-spectral face recognition methods are often extremely
+sensitive due to over-fitting to labels, performing well in
+some settings but not in others. Moreover, when finetuning on data from additional settings, supervised crossspectral face recognition are prone to catastrophic forgetting. Therefore, we propose a novel unsupervised framework for RGB-IR face recognition to minimize the cost and
+time inefficiencies pertaining to labeling large-scale, multispectral data required to train supervised cross-spectral
+recognition methods and to alleviate the effect of forgetting by removing over dependence on hard labels to bridge
+such large spectral differences. The proposed framework
+integrates an efficient backbone network architecture with
+part-based attention models, which collectively enhances
+common information between visible and infrared faces.
+Then, the framework is optimized using pseudo-labels and
+a new cross-spectral memory bank loss. This framework is
+evaluated on the ARL-VTF and TUFTS datasets, achieving
+98.55% and 43.28% true accept rate, respectively. Additionally, we analyze effects of forgetting and show that our
+framework is less prone to these effects.},
+  journal={To appear in CVPR Workshop}, 
+  title={Mitigating Catastrophic Interference using Unsupervised Multi-Part Attention
+for RGB-IR Face Recognition}, 
+  year={2023},
+  volume={},
+  number={},
+  preview={cvprw2023.gif},
+  selected=True
+}
+
+@article{nikhal2023cross,
+  author={Nikhal, Kshitij and Nimpa Fondje, Cedric and Riggan, Benjamin S.},
+  bibtex_show={true},
+  year={2023},
+
+  journal={Under Journal Review}, 
+  title={Cross-Spectral Attention for Unsupervised RGB-IR Face Verification and Person Re-identification}, 
+  preview={coming_soon.gif},
+  selected=True
+}
+
 @article{9978648,
   author={Nikhal, Kshitij and Riggan, Benjamin S.},
   bibtex_show={true},
-
+  abstract={Recent advancements like multiple contextual analysis, attention mechanisms, distance-aware optimization, and multi-task guidance have been widely used for supervised person re-identification (ReID), but the implementation and effects of such methods in unsupervised ReID frameworks are non-trivial and unclear, respectively. Moreover, with increasing size and complexity of image- and video-based ReID datasets, manual or semi-automated annotation procedures for supervised ReID are becoming labor intensive and cost prohibitive, which is undesirable especially considering the likelihood of annotation errors increase with scale/complexity of data collections. Therefore, we propose a new iterative clustering framework that is insensitive to annotation errors and over-fitting ReID annotations (i.e., labels). Our proposed unsupervised framework incorporates (a) a novel multi-context group attention architecture that learns a holistic attention map from multiple local and global contexts, (b) an unsupervised clustering loss function that down-weights easily discriminative identities, and (c) a background diversity term that helps cluster persons across different cross-camera views without leveraging any identification or camera labels. We perform extensive analysis using the DukeMTMC-VideoReID and MARS video-based ReID datasets and the MSMT17 image-based ReID dataset. Our approach is shown to provide a new state-of-the-art performance for unsupervised ReID, reducing the rank-1 performance gap between supervised and unsupervised ReID to 1.1%, 12.1%, and 21.9% from 6.1%, 17.9%, and 22.6% for DukeMTMC, MARS, and MSMT17 datasets, respectively.},
   journal={IEEE Transactions on Biometrics, Behavior, and Identity Science}, 
   title={Multi-Context Grouped Attention for Unsupervised Person Re-Identification}, 
   year={2022},
@@ -14,17 +57,23 @@
   number={},
   pages={1-1},
   doi={10.1109/TBIOM.2022.3226678},
+  preview={mcga.gif},
+  pdf={https://ieeexplore.ieee.org/document/9978648},
   selected=True
 }
 
-@book{einstein1956investigations,
+@article{nikhal2021unsupervised,
+  title={Unsupervised Attention Based Instance Discriminative Learning for Person Re-Identification},
+  author={Nikhal, Kshitij and Riggan, Benjamin S},
+  journal={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={2422--2431},
+  year={2021},
+  preview={gam.gif},
+  selected=True,
   bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif},
-  selected=True
+  pdf={https://arxiv.org/pdf/2011.01888.pdf},
+  abstract={Recent advances in person re-identification have demonstrated enhanced discriminability, especially with supervised learning or transfer learning. However, since the data requirements-including the degree of data curations-are becoming increasingly complex and laborious, there is a critical need for unsupervised methods that are robust to large intra-class variations, such as changes in perspective, illumination, articulated motion, resolution, etc. Therefore, we propose an unsupervised framework for person re-identification which is trained in an end-to-end manner without any pre-training. Our proposed framework leverages a new attention mechanism that combines group convolutions to (1) enhance spatial attention at multiple scales and (2) reduce the number of trainable parameters by 59.6%. Additionally, our framework jointly optimizes the network with agglomerative clustering and instance learning to tackle hard samples. We perform extensive analysis using the Market1501 and DukeMTMC-reID datasets to demonstrate that our method consistently outperforms the state-of-the-art methods (with and without pre-trained weights).},
+
 }
 
 @article{einstein1950meaning,
@@ -59,7 +108,7 @@
   pdf={example_pdf.pdf},
   altmetric={248277},
   dimensions={true},
-  selected={true}
+  selected={false}
 }
 
 @article{einstein1905molekularkinetischen,

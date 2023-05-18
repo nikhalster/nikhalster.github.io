@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Second AI Residency at Google X. 
+Joined Google X as an AI Resident. 
