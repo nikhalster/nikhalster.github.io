@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://nikhalster.github.io/mapassist//sitemap.xml
+Sitemap: https://nikhalster.github.io/sitemap.xml
