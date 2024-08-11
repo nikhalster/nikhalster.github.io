@@ -1,0 +1,3 @@
+[submodule "mapassist"]
+	path = mapassist
+	url = https://github.com/nikhalster/mapassist.git
