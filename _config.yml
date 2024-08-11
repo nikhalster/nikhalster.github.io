@@ -175,6 +175,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  mapassist:
+    output: true
+    permalink: /mapassist/:path/
 
 announcements:
   enabled: true
