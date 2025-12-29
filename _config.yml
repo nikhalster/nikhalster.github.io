@@ -178,6 +178,9 @@ collections:
   mapassist:
     output: true
     permalink: /mapassist/:path/
+  tahoe_road_conditions:
+    output: true
+    permalink: /tahoeroadconditions/:path/
 
 announcements:
   enabled: true
