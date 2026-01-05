@@ -3,20 +3,186 @@
 <head>
     <title>Road Condition Monitor</title>
     <style>
-        body { margin: 0; background: #111; display: grid; grid-template-columns: repeat(3, 1fr); height: 100vh; gap: 5px; padding: 5px; box-sizing: border-box; }
-        video { width: 100%; height: 100%; object-fit: cover; background: #000; border: 1px solid #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #0a0a0a; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 20px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .title { 
+            font-size: 24px; 
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .resort-selector {
+            display: flex;
+            gap: 10px;
+            background: #0a0a0a;
+            padding: 6px;
+            border-radius: 8px;
+        }
+        
+        .resort-btn {
+            background: transparent;
+            border: 1px solid #333;
+            color: #999;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .resort-btn:hover {
+            border-color: #555;
+            color: #fff;
+        }
+        
+        .resort-btn.active {
+            background: #fff;
+            color: #0a0a0a;
+            border-color: #fff;
+        }
+        
+        .featured {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .featured-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .featured-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        
+        .grid-container {
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .video-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        
+        .video-container:hover {
+            transform: scale(1.02);
+            border-color: #444;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 15px; }
+            .title { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Castle_Peak_NEV80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Kingvale_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Kingvale_PLA80_EB_2.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Whitmore_Grade_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_crystal_springs.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Dutch_Flat_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Colfax_PLA80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Applegate_PLA80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-    <video src="https://wzmedia.dot.ca.gov/D3/80_Rocklin_Rd_JWO_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video>
-
+    <div class="header">
+        <div class="title">🏔️ Road Condition Monitor</div>
+        <div class="resort-selector">
+            <button class="resort-btn active" data-resort="boreal">Boreal</button>
+            <!-- <button class="resort-btn" data-resort="palisades">Palisades Tahoe</button>
+            <button class="resort-btn" data-resort="northstar">Northstar</button> -->
+        </div>
+    </div>
+    
+    <div class="featured">
+        <div class="featured-label" id="resortLabel">Boreal Ski Resort</div>
+        <video id="featuredVideo" class="featured-video" autoplay muted loop playsinline></video>
+    </div>
+    
+    <div class="grid-container">
+        <div class="grid" id="cameraGrid">
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Castle_Peak_NEV80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Kingvale_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Kingvale_PLA80_EB_2.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Whitmore_Grade_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_crystal_springs.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Dutch_Flat_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Colfax_PLA80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Applegate_PLA80_EB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+            <div class="video-container"><video src="https://wzmedia.dot.ca.gov/D3/80_Rocklin_Rd_JWO_PLA80_WB.stream/playlist.m3u8" autoplay muted loop playsinline></video></div>
+        </div>
+    </div>
+    
+    <script>
+        const resorts = {
+            boreal: {
+                name: 'Boreal Ski Resort',
+                url: 'https://b15.hdrelay.com/camera/8893d4ed-8bb5-4fb9-b60e-8e84ce98ab79/relay/playlist.m3u8'
+            },
+            // palisades: {
+            //     name: 'Palisades Tahoe',
+            //     url: 'https://b15.hdrelay.com/camera/9f8e3456-7a21-4bc8-a90f-1e23cd45ef89/relay/playlist.m3u8'
+            // },
+            // northstar: {
+            //     name: 'Northstar California',
+            //     url: 'https://b15.hdrelay.com/camera/7d6c2345-8b90-4def-b12e-3f45gh67ij01/relay/playlist.m3u8'
+            // }
+        };
+        
+        const featuredVideo = document.getElementById('featuredVideo');
+        const resortLabel = document.getElementById('resortLabel');
+        const btns = document.querySelectorAll('.resort-btn');
+        
+        featuredVideo.src = resorts.boreal.url;
+        
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const resort = btn.dataset.resort;
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                featuredVideo.src = resorts[resort].url;
+                resortLabel.textContent = resorts[resort].name;
+            });
+        });
+    </script>
 </body>
 </html>
